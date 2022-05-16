@@ -78,6 +78,11 @@
 	  <version>2.6.7</version>
 	  <type>module</type>
 	 </dependency>
+	 <dependency>
+	  <groupId>com.nimbusds</groupId>
+	  <artifactId>nimbus-jose-jwt</artifactId>
+	  <version>9.22</version>
+	 </dependency>
 	</dependencies>
 
 	<build>
