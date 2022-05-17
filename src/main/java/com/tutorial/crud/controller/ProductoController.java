@@ -5,6 +5,7 @@ import com.tutorial.crud.dto.Mensaje;
 import com.tutorial.crud.dto.ProductoDto;
 import com.tutorial.crud.entity.Producto;
 import com.tutorial.crud.service.ProductoService;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping("/producto")
@@ -29,12 +31,14 @@ public class ProductoController {
     @Autowired
     ProductoService prodService;
     
+    @ApiOperation("Muestra una lista de productos")
     @GetMapping("/lista")
     public ResponseEntity<List<Producto>> list(){
         List<Producto> list = prodService.list();
         return new ResponseEntity<List<Producto>>(list, HttpStatus.OK);
     }
     
+//    @ApiIgnore si no quiero que se vea
     @GetMapping("/detail/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id") long id){
         if(!prodService.existsById(id)){
